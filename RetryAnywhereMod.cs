@@ -12,6 +12,7 @@ using RetryAnywhere;
 
 [assembly: MelonInfo(typeof(RetryAnywhereMod), ModHelperData.Name, ModHelperData.Version, ModHelperData.RepoOwner)]
 [assembly: MelonGame("Ninja Kiwi", "BloonsTD6")]
+[assembly: MelonGame("Ninja Kiwi", "BloonsTD6-Epic")]
 
 namespace RetryAnywhere;
 
@@ -27,7 +28,7 @@ public class RetryAnywhereMod : BloonsTD6Mod
             yield return AccessTools.Method(typeof(DefeatScreen), nameof(DefeatScreen.Open));
             yield return AccessTools.Method(typeof(InGame), nameof(InGame.Lose));
 
-            yield return MoreAccessTools.SafeGetNestedClassMethod(typeof(DefeatScreen), "Open", "MoveNext");
+            yield return MoreAccessTools.SafeGetNestedClassMethod(typeof(DefeatScreen), "Open");
         }
 
         [HarmonyPrefix]
@@ -68,14 +69,11 @@ public class RetryAnywhereMod : BloonsTD6Mod
             yield return AccessTools.Method(typeof(BossDefeatScreen), nameof(BossDefeatScreen.GetContinueMmCost));
             yield return AccessTools.Method(typeof(BossDefeatScreen), nameof(BossDefeatScreen.GetRetryMmCost));
         }
-        
+
         [HarmonyPostfix]
         private static void Postfix(ref KonFuze __result)
         {
-            if (InGameData.CurrentGame.gameEventId == "BossRoundsMod")
-            {
-                __result.Write(0);
-            }
+            __result.Write(0);
         }
     }
 }

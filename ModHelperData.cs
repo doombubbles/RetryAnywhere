@@ -2,7 +2,7 @@ namespace RetryAnywhere;
 
 public static class ModHelperData
 {
-    public const string WorksOnVersion = "35.0";
+    public const string WorksOnVersion = "55.0";
     public const string Version = "1.0.2";
     public const string Name = "Retry Anywhere";
 
@@ -13,5 +13,6 @@ public static class ModHelperData
     public const bool SquareIcon = true;
 
     public const string RepoOwner = "doombubbles";
-    public const string RepoName = "retry-anywhere";
+    public const string PrevRepoName = "retry-anywhere";
+    public const string RepoName = "RetryAnywhere";
 }
